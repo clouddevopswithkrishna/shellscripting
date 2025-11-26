@@ -1,0 +1,32 @@
+2025-11-26 10:12:03,221 INFO  [auth-service] User login request received for userId=raj123
+2025-11-26 10:12:03,242 DEBUG [auth-service] Validating credentials for userId=raj123
+
+2025-11-26 10:12:03,310 ERROR [auth-service] Authentication failed for userId=raj123
+java.lang.RuntimeException: Invalid password
+    at com.app.AuthService.validate(AuthService.java:87)
+    at com.app.AuthController.login(AuthController.java:45)
+
+2025-11-26 10:12:04,514 INFO  [payment-service] Payment request initialized for orderId=ORD987233
+2025-11-26 10:12:04,609 WARN  [payment-service] Payment gateway timeout detected (retrying...)
+
+2025-11-26 10:12:05,132 ERROR [payment-service] Payment processing failed for orderId=ORD987233
+java.net.SocketTimeoutException: Read timed out
+    at com.pay.GatewayClient.send(GatewayClient.java:112)
+
+2025-11-26 10:12:10,344 INFO  [inventory-service] Checking stock for item=ITM1221
+2025-11-26 10:12:10,421 ERROR [inventory-service] Stock lookup failed for item=ITM1221
+java.sql.SQLException: Connection refused
+    at com.db.InventoryDB.query(InventoryDB.java:58)
+
+2025-11-26 10:12:12,220 INFO  [order-service] Creating new order for user raj123
+2025-11-26 10:12:12,510 WARN  [order-service] Order creation delayed due to dependent service slowdown
+
+2025-11-26 10:12:12,811 ERROR [order-service] Unable to create order for user=raj123
+java.lang.NullPointerException
+    at com.order.OrderManager.create(OrderManager.java:142)
+    at com.order.OrderController.placeOrder(OrderController.java:26)
+
+2025-11-26 10:12:15,902 DEBUG [notification-service] Preparing email for user raj123
+2025-11-26 10:12:16,043 ERROR [notification-service] Failed to send email notification
+javax.mail.MessagingException: Server not reachable
+    at com.mail.SMTPClient.connect(SMTPClient.java:67)
